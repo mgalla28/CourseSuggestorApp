@@ -10,7 +10,7 @@ coll = db.CsClasses  # type: pymongo.collection
 
 master_dict = {}
 for i in coll.find({}):
-    master_dict.update({i['designation']: Course(i['designation'], list(i['out_edges']), i['credit_hours'])})
+    master_dict.update({i['designation']: Course(i['designation'], list(i['dependents']), i['credit_hours'])})
 
 
 cs141 = Course('CS 141', ['CS 251', 'CS 211', 'CS 261'], 3)

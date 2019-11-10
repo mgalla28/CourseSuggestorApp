@@ -1,0 +1,6 @@
+# Folders
+venv
+.idea
+__pycache__
+
+# Files

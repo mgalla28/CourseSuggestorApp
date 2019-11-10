@@ -1,5 +1,5 @@
 class Course:
-    def __init__(self, id, out_edges, credit_hours):
+    def __init__(self, id, out_edges=[], credit_hours=3):
         self.id = id
-        self.edge_list = out_edges
+        self.dependents = out_edges
         self.credit_hours = credit_hours
