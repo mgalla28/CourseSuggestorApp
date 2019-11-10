@@ -3,3 +3,6 @@ class Course:
         self.id = id
         self.dependents = out_edges
         self.credit_hours = credit_hours
+
+    def __eq__(self, other):
+        return self.id == other.id

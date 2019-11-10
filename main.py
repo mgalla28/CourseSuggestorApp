@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from CourseList import CourseList
+from Course import Course
 from pymongo import MongoClient
 from os import system
 
@@ -12,7 +13,13 @@ def main():
     conn = MongoClient()
     db = conn.ClassGraphs
     coll = db.CsClasses
-    return render_template('main.html', classes=CourseList(coll).return_vertices())
+    input_dict = dict()
+    for i in coll.find({}):
+        dep_str = i['dependents']  # type: str
+        dep_list = dep_str.split(",")
+        input_dict[i['designation']] = Course(i['designation'], dep_list, i['credit_hours'])
+
+    return render_template('main.html', classes=CourseList(input_dict).return_vertices())
 
 @app.route('/about')
 def about_page():

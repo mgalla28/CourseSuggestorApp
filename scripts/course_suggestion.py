@@ -10,7 +10,9 @@ coll = db.CsClasses  # type: pymongo.collection
 
 master_dict = {}
 for i in coll.find({}):
-    master_dict.update({i['designation']: Course(i['designation'], list(i['dependents']), i['credit_hours'])})
+    dep_str = i['dependents'] # type: str
+    dep_list = dep_str.split(",")
+    master_dict.update({i['designation']: Course(i['designation'], dep_list, i['credit_hours'])})
 
 
 cs141 = Course('CS141', ['CS251', 'CS211', 'CS261'], 3)
@@ -53,13 +55,14 @@ def suggest_courses(masterList: CourseList, courses: [Course] = None) -> [Course
 
     ret_list = []
     for course in possible:
-        if course not in impossible:
+        if course not in impossible and course not in ret_list:
             ret_list.append(course)
 
     return ret_list
 
 
 print(suggest_courses(master, [cs141]))
+print(suggest_courses(master, [cs141, cs151]))
 
 
 
