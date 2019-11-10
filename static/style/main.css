@@ -1,0 +1,29 @@
+
+.top {
+      position: relative;
+      background-color:#6495ED;
+      padding: 14px 16px;
+}
+
+.top a:hover {
+             background-color: #ddd;
+             color: black;
+}
+
+ul {
+    list-style-type: None
+    margin: 0;
+    padding: 0;
+    background-color: #6495ED;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+      display: block;
+      padding: 14px 16px;
+
+}

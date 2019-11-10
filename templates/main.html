@@ -2,24 +2,19 @@
 <html>
 <head>
     <title>My Landing Page</title>
-    <style>
-        .top {
-                position: relative;
-                background-color:#6495ED;
-                padding: 14px 16px;
-              }
+    <link rel="stylesheets" type="text/css" href="{{ url_for('static', filename='style/main.css') }}">
 
-         .top a:hover {
-                       background-color: #ddd;
-                       color: black;
-                      }
-    </style>
 </head>
     <body bgcolor="#778899">
-    <div class="top">
+    <!-- <div class="top">
         <a class="active" href="#home">Home</a>
         <a class="active" href="/about">About</a>
-    </div>
+    </div> -->
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
         <font>Here are the classes that exist: {{ classes }}</font>
         <div></div>
     </body>
