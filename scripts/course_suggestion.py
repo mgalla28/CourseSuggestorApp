@@ -1,5 +1,5 @@
-from CourseList import CourseList
-from Course import Course
+from Core.CourseList import CourseList
+from Core.Course import Course
 
 from pymongo import MongoClient
 import pymongo

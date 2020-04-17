@@ -4,3 +4,5 @@ venv
 __pycache__
 
 # Files
+templates/main.html
+templates/about.html
