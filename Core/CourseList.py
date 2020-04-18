@@ -1,3 +1,5 @@
+from Core.Course import Course
+
 class CourseList:
     """Graph that contains courses."""
     def __init__(self, input_dict: dict = None):
@@ -18,6 +20,16 @@ class CourseList:
         for key, value in self.course_dict.items():
             ret_set.add(key)
         return ret_set
+
+    def add_course(self, course):
+        if type(course) is Course:
+            self.course_dict[course.course_identifier] = course
+
+    def suggest_courses(self):
+        pass
+
+
+
 
 
 
