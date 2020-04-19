@@ -14,25 +14,95 @@
     {
       "course_identifier": "CS 151",
       "dependents": [
-        "CS 251"
+        "CS 251",
+        "CS 301"
       ],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 211",
-      "dependents": [],
+      "dependents": [
+        "CS 341",
+        "CS 342",
+        "CS 361",
+        "CS 362"
+      ],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 251",
-      "dependents": [],
+      "dependents": [
+        "CS 341",
+        "CS 342",
+        "CS 361"
+      ],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 261",
+      "dependents": [
+        "CS 341",
+        "CS 361",
+        "CS 362"
+      ],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 301",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 341",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 342",
+      "dependents": ["CS 440"],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 361",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 362",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 377",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 401",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 440",
+      "dependents": [
+        "CS 442"
+      ],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 442",
       "dependents": [],
       "credit_hours": 3
     }
