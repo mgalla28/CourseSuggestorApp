@@ -25,8 +25,7 @@ class CourseList:
         if type(course) is Course:
             self.course_dict[course.course_identifier] = course
 
-    def suggest_courses(self):
-        pass
+
 
 
 

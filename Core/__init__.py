@@ -1,7 +1,9 @@
 from .Course import Course
 from .Curriculum import Curriculum
 from .CourseList import CourseList
-from .DbManager import DbManager
+from .DataManager import DataManager
 from .User import User
+from .UniversalDataConnection import UniversalDataConnection
+from .FileManager import FileManager
 
-__all__ = ['Course', 'CourseList', 'DbManager', 'User', 'Curriculum']
+__all__ = ['Course', 'CourseList', 'DataManager', 'User', 'Curriculum', 'UniversalDataConnection', 'FileManager']

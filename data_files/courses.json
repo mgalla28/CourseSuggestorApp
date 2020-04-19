@@ -1,0 +1,40 @@
+{
+  "courses": [
+    {
+      "course_identifier": "CS 141",
+      "dependents": [
+        "CS 251",
+        "CS 211",
+        "CS 261"
+      ],
+      "credit_hours": 3
+    },
+
+
+    {
+      "course_identifier": "CS 151",
+      "dependents": [
+        "CS 251"
+      ],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 211",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 251",
+      "dependents": [],
+      "credit_hours": 3
+    },
+
+    {
+      "course_identifier": "CS 261",
+      "dependents": [],
+      "credit_hours": 3
+    }
+  ]
+}

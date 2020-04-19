@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     dbManager = MongoManager()
-    return render_template('main.html', classes=dbManager.getCourseList())
+    return render_template('main.html', classes=dbManager.get_courselist())
 
 
 @app.route('/about')

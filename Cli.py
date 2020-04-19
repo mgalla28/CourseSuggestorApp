@@ -12,8 +12,7 @@ def main():
 
     print('You are logged in as a guest.')
     user_account = User(userName='guest')
-
-    master_curriculum = Curriculum.getInstance()
+    UniversalDataConnection(FileManager())
 
 
     while True:
@@ -24,7 +23,7 @@ def main():
                           '     Quit: q\n')
 
         if user_input.lower() == 'a':
-            add_course(account=user_account, master=master_curriculum)
+            add_course(account=user_account)
 
         elif user_input.lower() == 'v':
             view_courses(user_account)
@@ -39,14 +38,14 @@ def main():
             print('Command invalid.')
 
 
-def add_course(account: User, master: CourseList) -> None:
+def add_course(account: User) -> None:
     """
     Helper function to encapsulate add course logic for command line interface.
-    May be replaced with method for final implemenetation.
 
     :param account: User account to add class to.
     :return: None
     """
+    master = UniversalDataConnection.get_instance().data_connection.get_courselist()
     print('Please select a course from the following list of courses:')
     for key in master.course_dict.keys():
         print(key)
@@ -60,7 +59,10 @@ def view_courses(account: User) -> None:
         print(key)
 
 def course_suggestion(account: User) -> None:
-    print('Not implemented yet.')
+    print('Here are the courses you should take next semester.')
+    suggested_courses = account.suggest_courses()
+    for course in suggested_courses:
+        print(course)
 
 if __name__ == '__main__':
     main()
