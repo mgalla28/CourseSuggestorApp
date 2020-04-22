@@ -22,16 +22,21 @@ class User:
         impossible = []
 
         if self.courseSet.course_dict is False:  # Case when the user has no taken courses
-            ret_list = []
-            for course in master_course_map.values:
+            confirmed = []
+            for course in master_course_map.values():
                 if len(course.dependents) == 0:  # should be pre reqs
-                    ret_list.append(course)
-            return ret_list
+                    confirmed.append(course)
+            return confirmed
 
         # Add anything that comes after the classes currently taken to the possible list
         for pre_req in self.courseSet.course_dict.values():
             for course in pre_req.dependents:
                 possible.append(course)
+
+        # remove currently taken classes from list if possible courses
+        for course in self.courseSet.course_dict.values():
+            if course.course_identifier in possible:
+                possible.remove(course.course_identifier)
 
         # Add all untaken courses to the queue for checking
         for i in master_course_map.course_dict.values():
@@ -43,9 +48,14 @@ class User:
             for course in pre_req.dependents:
                 impossible.append(course)
 
-        ret_list = []
+        confirmed = []
         for course in possible:
-            if course not in impossible and course not in ret_list:
-                ret_list.append(course)
+            if course not in impossible and course not in confirmed:
+                confirmed.append(course)
+
+        ret_list = []
+        for course_name in confirmed:
+            add_course = master_course_map.course_dict[course_name]
+            ret_list.append(add_course)
 
         return ret_list

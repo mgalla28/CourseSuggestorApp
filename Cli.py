@@ -62,7 +62,7 @@ def course_suggestion(account: User) -> None:
     print('Here are the courses you should take next semester.')
     suggested_courses = account.suggest_courses()
     for course in suggested_courses:
-        print(course)
+        print(course.course_identifier)
 
 if __name__ == '__main__':
     main()

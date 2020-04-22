@@ -28,4 +28,4 @@ class FileManager(DataManager):
             for course_data in data:
                 courseDict[course_data['course_identifier']] = Course(course_data['course_identifier'], course_data['dependents'], course_data['credit_hours'])
 
-        return CourseList(input_dict= courseDict)
+        return CourseList(input_dict=courseDict)
