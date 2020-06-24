@@ -26,10 +26,10 @@ def main():
             add_course(account=user_account)
 
         elif user_input.lower() == 'v':
-            view_courses(user_account)
+            view_courses(account=user_account)
 
         elif user_input.lower() == 'g':
-            course_suggestion(user_account)
+            course_suggestion(account=user_account)
 
         elif user_input.lower() == 'q':
            quit(0)

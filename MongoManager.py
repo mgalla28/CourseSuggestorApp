@@ -19,8 +19,8 @@ class MongoManager(DataManager):
 
     def get_courselist(self) -> CourseList:
         input_dict = dict()
-        for i in self.coll.find({}):
-            dep_str = i['dependents']  # type: str
+        for col in self.coll.find({}):
+            dep_str = col['dependents']  # type: str
             dep_list = dep_str.split(",")
-            input_dict[i['designation']] = Course(i['designation'], dep_list, i['credit_hours'])
+            input_dict[col['designation']] = Course(col['designation'], dep_list, col['credit_hours'])
         return CourseList(input_dict).return_vertices()
