@@ -1,7 +1,7 @@
 from Core.Course import Course
 
 class CourseList:
-    """Graph that contains courses."""
+    """Graph that contains courses. I believe this is now obsolete."""
     def __init__(self, input_dict: dict = None):
         self.course_dict = {}
         if input_dict is not None:

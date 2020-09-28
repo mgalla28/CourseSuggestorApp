@@ -9,6 +9,7 @@ class SingletonException(Exception):
 
 
 class FileManager(DataManager):
+    """Loads contents of file directly in to memory to mimic function of database."""
 
     def __init__(self):
         path = os.getcwd()
