@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
+import AvailableCourseList from './AvailableCourseList.js';
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <AvailableCourseList></AvailableCourseList>
         <a
           className="App-link"
           href="https://reactjs.org"
