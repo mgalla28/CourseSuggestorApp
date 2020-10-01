@@ -13,7 +13,6 @@ class FileManager(DataManager):
 
     def __init__(self):
         path = os.getcwd()
-        path = path[:-8]
         source_file = open(f'{path}\\data_files\\courses.json')
         self.json_data = json.load(source_file)
 

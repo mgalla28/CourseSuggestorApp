@@ -5,9 +5,10 @@ class CourseBox extends Component {
     render(){
         return (
             <div class="card">
-                <div class="card-header text-dark">Available Courses</div>
-                <ul class="list-group list-group-flush">
+                <div class="card-header text-dark list-group-item-dark">Available Courses</div>
+                <ul class="list-group">
                     <Course class="card-body"></Course>
+                    <Course class="card-body w-100"></Course>
                 </ul>
             </div>
         );
