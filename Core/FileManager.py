@@ -29,3 +29,6 @@ class FileManager(DataManager):
                 courseDict[course_data['course_identifier']] = Course(course_data['course_identifier'], course_data['dependents'], course_data['credit_hours'])
 
         return CourseList(input_dict=courseDict)
+
+    def get_courseList_json(self):
+        return self.json_data

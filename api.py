@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from Core import *
+from json import *
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +17,8 @@ def login():
 
 @app.route('/curriculum', methods=['GET'])
 def get_curriculum():
-    return UniversalDataConnection.get_instance().data_connection.get_courselist()  # Need to serialize
+    return UniversalDataConnection.get_instance().data_connection.get_courseList_json()  # Need to serialize
+
 
 
 user_account = User(userName='guest')

@@ -4,12 +4,14 @@ class Course extends Component {
     render(){
         return (
         <li class="list-group-item list-group-item-primary" draggable="true">
-            <table> {/*TODO: Is table the best way to do this?*/}
-                <tr>
-                    <td class="w-100">Course</td>
-                    |  
-                    <td>  3</td>
-                </tr>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="w-100">Course</td>
+                        <td>|</td>  
+                        <td>  3</td>
+                    </tr>
+                </tbody>
             </table>
         </li>
         );
