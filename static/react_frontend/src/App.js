@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar.js';
@@ -19,16 +19,15 @@ function App() {
     
     const res = await fetch(backendServer + '/curriculum')
     const data = await res.json()
-    dataLoaded = true;
     setAvailableCourses(data['courses'])
     
   };
 
   const [user] = useState({userName: 'Guest'});
   const [availableCourses, setAvailableCourses] = useState([]);
-  if (!dataLoaded){
-    fetchAllCourses();    
-  }
+  useEffect(() => {
+    fetchAllCourses()
+  }, [])
 
 
   console.log('else')

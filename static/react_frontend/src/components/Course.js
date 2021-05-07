@@ -1,18 +1,11 @@
 import React from 'react';
 
-const Course = ({ courseName, creditHours }) => {
+const Course = ({ courseName, creditHours, key }) => {
     return (
-        <li className="list-group-item list-group-item-primary" draggable="true">
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="w-100">{ courseName }</td>
-                        <td>|</td>  
-                        <td>{ creditHours }</td>
-                    </tr>
-                </tbody>
-            </table>
-        </li>
+        <li className="list-group-item list-group-item-primary" style={{ margin: '0px' }} draggable="true" key={key}>
+            <div style={{ float: 'left', border: 'solid', padding: '20px', margin: '0px'}}>{ courseName }</div>
+            <div style={{ float: 'right', border:'solid', padding: '20px', margin: '0px' }}>{ creditHours }</div>
+        </li> 
         );
 }
 
