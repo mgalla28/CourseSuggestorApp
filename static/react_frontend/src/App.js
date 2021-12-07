@@ -3,6 +3,7 @@ import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar.js';
 import CourseBox from './components/CourseBox';
+import SaveChangesButton from './components/SaveChangesButton'
 
 /*
 Global state data needed:
@@ -11,7 +12,6 @@ backend api
 */
 
 const backendServer = 'http://localhost:5000';
-var dataLoaded = false;
 
 function App() {
 
@@ -25,19 +25,28 @@ function App() {
 
   const [user] = useState({userName: 'Guest'});
   const [availableCourses, setAvailableCourses] = useState([]);
+  const [nextSemesterClasses, setNextSemesterCourses] = useState([])
   useEffect(() => {
     fetchAllCourses()
   }, [])
 
+function availableCoursesClick (e) {
+  const courseText = e.currentTarget.textContent;
+  const courseName = courseText.slice(0, 6)
+  setNextSemesterCourses(nextSemesterClasses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
+}
 
-  console.log('else')
+
   return (
     <div className="App">
       <NavBar userName={user.userName} />
       <div className="App-body">
-        <CourseBox title="Taken Courses" courseList={[]}/>
-        <CourseBox title="Next Semester Schedule" courseList={[]}/>
-        <CourseBox title="Available Courses" id="AvailableCourseList" courseList={availableCourses}/>        
+        <SaveChangesButton />
+        <div>
+          <CourseBox title="Taken Courses" courseList={[]}/>
+          <CourseBox title="Next Semester Schedule" courseList={nextSemesterClasses}/>
+          <CourseBox title="Available Courses" id="AvailableCourseList" courseList={availableCourses} courseClickFunction={availableCoursesClick}/>        
+        </div>
       </div>
     </div>
   );
