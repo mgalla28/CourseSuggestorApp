@@ -1,5 +1,4 @@
-from Core import Course, CourseList
-from Core.UniversalDataConnection import UniversalDataConnection
+from . import CourseList, UniversalDataConnection
 
 class User:
     """A user contains a unique username and a set of taken classes"""
@@ -7,7 +6,7 @@ class User:
     def __init__(self, userName, courseSet: CourseList=None):
         self.userName = userName
         if courseSet is None:
-            self.courseSet = CourseList()
+            self.courseSet = CourseList
         else:
             self.courseSet = courseSet
 

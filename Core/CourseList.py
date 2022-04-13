@@ -1,11 +1,12 @@
 from Core.Course import Course
 
+
 class CourseList:
-    """Graph that contains courses. I believe this is now obsolete."""
+    """Graph that contains courses."""
+
     def __init__(self, input_dict: dict = None):
         self.course_dict = {}
         if input_dict is not None:
-            print(f'This is input dict {input_dict}')
             for key, value in input_dict.items():
                 self.course_dict[key] = value
 
@@ -24,12 +25,3 @@ class CourseList:
     def add_course(self, course):
         if type(course) is Course:
             self.course_dict[course.course_identifier] = course
-
-
-
-
-
-
-
-
-

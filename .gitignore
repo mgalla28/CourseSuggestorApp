@@ -6,3 +6,4 @@ __pycache__
 # Files
 templates/main.html
 templates/about.html
+data_files/users.json

@@ -1,14 +1,15 @@
-from Core import DataManager
+from . import DataManager
+
 
 class SingletonException(Exception):
     pass
+
 
 class UniversalDataConnection:
     """
     Singleton that holds instance of data manager class for universal access.
     """
     __instance = None
-
 
     def __init__(self, data_manager: DataManager = None):
         if UniversalDataConnection.__instance is not None:

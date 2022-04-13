@@ -8,15 +8,14 @@ CORS(app)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        pass
-    else:
-        return 'You are logged in as a guest user.', User('Guest')
+    name_query = request.data.decode().replace('"', '')
+    return UniversalDataConnection.get_instance().data_connection.get_user(name_query)
 
 
 @app.route('/curriculum', methods=['GET'])
 def get_curriculum():
-    return UniversalDataConnection.get_instance().data_connection.get_courseList_json()  # Need to serialize
+    return UniversalDataConnection.get_instance().data_connection.get_courseList_json()
+
 
 user_account = User(userName='guest')
 UniversalDataConnection(FileManager())

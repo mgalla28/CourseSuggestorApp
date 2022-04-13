@@ -2,108 +2,89 @@
   "courses": [
     {
       "course_identifier": "CS 141",
-      "dependents": [
-        "CS 251",
-        "CS 211",
-        "CS 261"
-      ],
+      "pre_reqs": [],
       "credit_hours": 3
     },
 
 
     {
       "course_identifier": "CS 151",
-      "dependents": [
-        "CS 251",
-        "CS 301"
-      ],
+      "pre_reqs": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 211",
-      "dependents": [
-        "CS 341",
-        "CS 342",
-        "CS 361",
-        "CS 362"
-      ],
+      "pre_reqs": ["CS 141"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 251",
-      "dependents": [
-        "CS 341",
-        "CS 342",
-        "CS 361"
-      ],
+      "pre_reqs" : ["CS 141", "CS 151"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 261",
-      "dependents": [
-        "CS 341",
-        "CS 361",
-        "CS 362"
-      ],
+      "pre_reqs" : ["CS 141"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 301",
-      "dependents": [],
+      "pre_reqs" : ["CS 151"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 341",
+      "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
       "dependents": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 342",
+      "pre_reqs" : ["CS 211", "CS 251"],
       "dependents": ["CS 440"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 361",
+      "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
       "dependents": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 362",
-      "dependents": [],
+      "pre_reqs": ["CS 211", "CS 261"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 377",
-      "dependents": [],
+      "pre_reqs": ["CS 251"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 401",
-      "dependents": [],
+      "pre_reqs": ["CS 251"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 440",
-      "dependents": [
-        "CS 442"
-      ],
+      "pre_reqs": ["CS 342"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 442",
-      "dependents": [],
+      "pre_reqs": ["CS 440"],
       "credit_hours": 3
     }
   ]
