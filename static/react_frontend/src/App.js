@@ -37,12 +37,12 @@ function nextSemesterCoursesClick (e) {
 }
 
   if (!user) {
-    return <Login setUser={setUser} backendServer={backendServer}/>
+    return <Login setUser={setUser} backendServer={backendServer}/>           
   }
 
   return (
     <div className="App">
-      <NavBar userName={user.username} />
+      <NavBar userName={user} />
       <div className="App-body">
         <SaveChangesButton />
         <SuggestCoursesButton />

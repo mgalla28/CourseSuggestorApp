@@ -42,3 +42,9 @@
     transform: rotate(360deg);
   }
 }
+
+.Login-body {
+  background-color: #242c3a;
+  padding: 25px;
+  min-height: 100vh;
+}

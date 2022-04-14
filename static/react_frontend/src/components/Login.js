@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -13,19 +13,29 @@ function Login({setUser, backendServer}) {
             method: 'POST',
             body: JSON.stringify(userName, password)
         }, () => document.body.style.cursor='initial')
-        setUser({res})
+        const data = await res.json()
+        setUser(data['username'])
         document.body.style.cursor='initial'
     }
 
     return(
-        <form onSubmit={handleSubmit}> 
-            <label>Username</label>
-            <input value={userName} onChange={(e) => setUserName(e.target.value)}></input>
-            <label>Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-            <button type='submit'>Login</button>
-            <button>Login as Guest</button>
-        </form>
+        <div className='Login-body'>
+            <div className="card bg-dark text-white border border-dark">
+                <h5 className='card-title text-center'>Course Suggestor</h5>
+                <div className='card-body'>
+                    <form onSubmit={handleSubmit}> 
+                        <div class="d-flex flex-column">
+                            <label>Username</label>
+                            <input value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+                            <label>Password</label>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                            <button class="m-2" type='submit'>Login</button>
+                            <button class="m-2">Login as Guest</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }
 
