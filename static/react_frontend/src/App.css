@@ -1,3 +1,19 @@
+:root {
+  --oxford-blue: #040835ff;
+  --royal-blue-dark: #111958ff;
+  --blue-green: #3797BDff;
+  --black: #000000ff;
+  --cerulean-crayola: #31A3D4ff;
+  --cyber-grape: #635389ff;
+  --purple-mountain-majesty: #8F80B3; 
+  --carolina-blue: #58a4caff;
+  --space-cadet: #14244eff;
+  --xiketic: #0e1324ff;
+  --xiketic-2: #02061dff;
+
+  background-color: var(--space-cadet);
+}
+
 .App {
   text-align: center;
 }
@@ -13,19 +29,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-body {
-  background-color: #282c34;
+  background-color: var(--space-cadet);
   padding: 25px;
   min-height: 100vh;
 }
@@ -44,7 +49,31 @@
 }
 
 .Login-body {
-  background-color: #242c3a;
+  background-color: var(--oxford-blue);
   padding: 25px;
   min-height: 100vh;
+}
+
+.Login-card {
+  background-color: var(--black) !important;
+}
+
+.Navbar {
+  background-color: var(--xiketic);
+}
+
+.CourseBox {
+  background-color: var(--space-cadet) !important;
+}
+
+.Course {
+  background-color: var(--purple-mountain-majesty) !important;
+}
+
+.nav-link {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #61dafb;
+  cursor: pointer;
 }

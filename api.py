@@ -19,9 +19,8 @@ def login():
 
 @app.route('/curriculum', methods=['GET'])
 def get_curriculum():
-    return UniversalDataConnection.get_instance().data_connection.get_courseList_json()
+    return UniversalDataConnection.get_instance().data_connection.get_curriculum_json()
 
 
-user_account = User(userName='guest')
 UniversalDataConnection(FileManager())
 app.run()

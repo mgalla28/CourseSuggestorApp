@@ -28,9 +28,14 @@ function availableCoursesClick (e) {
   const courseText = e.currentTarget.textContent;
   const courseName = courseText.slice(0, 6)
   setNextSemesterCourses(nextSemesterClasses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
+  e.currentTarget.remove();
 }
 
 function nextSemesterCoursesClick (e) {
+  const courseText = e.currentTarget.textContent;
+  const courseName = courseText.slice(0, 6)
+  setAvailableCourses(availableCourses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
+  availableCourses.sort()
   e.currentTarget.remove();
 }
 

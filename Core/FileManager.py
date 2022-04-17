@@ -34,5 +34,5 @@ class FileManager(DataManager):
 
         return CourseList(input_dict=courseDict)
 
-    def get_courseList_json(self):
+    def get_curriculum_json(self):
         return self.json_data
