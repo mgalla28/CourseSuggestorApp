@@ -7,30 +7,43 @@ function Login({setUser, backendServer}) {
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (e) =>{
-        e.preventDefault()
+        e.preventDefault()        
         document.body.style.cursor='wait'
-        const res = await fetch(backendServer + '/login', {
+        const loginInfo = {userName, password}
+        const res = await fetch('/login', {
             method: 'POST',
-            body: JSON.stringify(userName, password)
-        }, () => document.body.style.cursor='initial')
-        const data = await res.json()
-        setUser(data['username'])
-        document.body.style.cursor='initial'
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginInfo)
+        });
+
+        if (res.ok) {
+            const data = await res.json()
+            if ('username' in data){
+                setUser(data['username'])
+                document.body.style.cursor='initial'
+            }
+        }
+        else {
+            alert('Bad login');
+            document.body.style.cursor='initial';
+        }
     }
 
     return(
         <div className='Login-body'>
             <div className="card bg-dark text-white border border-dark">
-                <h5 className='card-title text-center'>Course Suggestor</h5>
+                <h1 className='card-title text-center' style={{marginTop: 20}}>Course Suggestor</h1>
                 <div className='card-body'>
                     <form onSubmit={handleSubmit}> 
-                        <div class="d-flex flex-column">
+                        <div className="d-flex flex-column">
                             <label>Username</label>
-                            <input value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+                            <input onChange={(e) => setUserName(e.target.value)}></input>
                             <label>Password</label>
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                            <button class="m-2" type='submit'>Login</button>
-                            <button class="m-2">Login as Guest</button>
+                            <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
+                            <button className="btn btn-secondary mt-3" type='submit'>Login</button>
+                            <button className="btn btn-secondary mt-2">Login as Guest</button>
                         </div>
                     </form>
                 </div>

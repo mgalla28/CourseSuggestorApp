@@ -23,11 +23,8 @@ class FileManager(DataManager):
     def get_user(self, user_name) -> User:
         for data in self.user_json_data.values():
             for user_data in data:
-                print('here is user data')
-                print(user_data)
                 if user_data["username"] == user_name:
-                    password = user_data['password']
-                    return json.dumps({'username': user_data["username"]})
+                    return user_data
 
     def get_courselist(self) -> CourseList:
         courseDict = {}

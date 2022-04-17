@@ -7,13 +7,11 @@ import CourseBox from './components/CourseBox';
 import SaveChangesButton from './components/SaveChangesButton';
 import SuggestCoursesButton from './components/SuggestCoursesButton';
 
-const backendServer = 'http://localhost:5000';
-
 function App() {
 
   const fetchAllCourses = async () => {
     
-    const res = await fetch(backendServer + '/curriculum')
+    const res = await fetch('/curriculum')
     const data = await res.json()
     setAvailableCourses(data['courses'])
     
@@ -37,7 +35,7 @@ function nextSemesterCoursesClick (e) {
 }
 
   if (!user) {
-    return <Login setUser={setUser} backendServer={backendServer}/>           
+    return <Login setUser={setUser}/>           
   }
 
   return (
