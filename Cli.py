@@ -60,7 +60,7 @@ def view_courses(account: User) -> None:
 
 def course_suggestion(account: User) -> None:
     print('Here are the courses you should take next semester.')
-    suggested_courses = account.suggest_courses()
+    suggested_courses = account.suggest_courses(UniversalDataConnection.get_instance().data_connection.get_courselist())
     for course in suggested_courses:
         print(course.course_identifier)
 

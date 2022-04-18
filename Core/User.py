@@ -1,4 +1,5 @@
-from . import CourseList, UniversalDataConnection
+from Core.Course import Course
+from Core.CourseList import CourseList
 
 class User:
     """A user contains a unique username and a set of taken classes"""
@@ -6,17 +7,17 @@ class User:
     def __init__(self, userName, courseSet: CourseList=None):
         self.userName = userName
         if courseSet is None:
-            self.courseSet = CourseList
+            self.courseSet = CourseList()
         else:
             self.courseSet = courseSet
 
     def add_course(self, course):
         self.courseSet.add_course(course)
 
-    def suggest_courses(self):
-        master_course_map = UniversalDataConnection.get_instance().data_connection.get_courselist()
+    def suggest_courses(self, master_course_list):
+        master_course_map = master_course_list
 
-        courseQueue = []
+        course_queue = []
         possible = []
         impossible = []
 
@@ -40,10 +41,10 @@ class User:
         # Add all untaken courses to the queue for checking
         for i in master_course_map.course_dict.values():
             if i not in self.courseSet.course_dict.values():
-                courseQueue.append(i)
+                course_queue.append(i)
 
         # Eliminate courses for which the pre reqs aren't met
-        for pre_req in courseQueue:
+        for pre_req in course_queue:
             for course in pre_req.dependents:
                 impossible.append(course)
 

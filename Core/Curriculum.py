@@ -10,11 +10,18 @@ class Curriculum(CourseList):
     """
 
     def __init__(self):
-        dataManager = UniversalDataConnection.get_instance().data_connection
-        self.course_dict = dataManager.get_courselist()
+        data_manager = UniversalDataConnection.get_instance().data_connection
+        self.course_dict = data_manager.get_courselist()
+
+    def build_course_list(self, course_identifier_list):
+        new_course_list = CourseList()
+        for course_identifier in course_identifier_list:
+            course = self.course_dict.course_dict[course_identifier]
+            new_course_list.add_course(course)
+        return new_course_list
 
     def suggest_courses(self, user_courses: CourseList):
-        courseQueue = []
+        course_queue = []
         possible = []
         impossible = []
 
@@ -31,9 +38,9 @@ class Curriculum(CourseList):
 
         for i in user_courses.course_dict.values():
             if i not in self.course_dict:
-                courseQueue.append(i)
+                course_queue.append(i)
 
-        for pre_req in courseQueue:
+        for pre_req in course_queue:
             for course in pre_req.pre_reqs:
                 impossible.append(course)
 

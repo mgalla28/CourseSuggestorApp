@@ -1,4 +1,4 @@
-from Core.Course import Course
+from .Course import Course
 
 
 class CourseList:
@@ -23,5 +23,5 @@ class CourseList:
         return ret_set
 
     def add_course(self, course):
-        if type(course) is Course:
+        if type(course) is Course and course.course_identifier not in self.course_dict:
             self.course_dict[course.course_identifier] = course

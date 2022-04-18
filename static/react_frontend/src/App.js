@@ -19,7 +19,8 @@ function App() {
 
   const [user, setUser] = useState();
   const [availableCourses, setAvailableCourses] = useState([]);
-  const [nextSemesterClasses, setNextSemesterCourses] = useState([])
+  const [nextSemesterClasses, setNextSemesterCourses] = useState([]);
+  const [takenCourses, setTakenCourses] = useState([]);
   useEffect(() => {
     fetchAllCourses()
   }, [])
@@ -28,15 +29,14 @@ function availableCoursesClick (e) {
   const courseText = e.currentTarget.textContent;
   const courseName = courseText.slice(0, 6)
   setNextSemesterCourses(nextSemesterClasses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
-  e.currentTarget.remove();
+  setAvailableCourses(availableCourses.filter(course => !(course.course_identifier === courseName)))
 }
 
 function nextSemesterCoursesClick (e) {
   const courseText = e.currentTarget.textContent;
   const courseName = courseText.slice(0, 6)
   setAvailableCourses(availableCourses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
-  availableCourses.sort()
-  e.currentTarget.remove();
+  setNextSemesterCourses(nextSemesterClasses.filter(course => !(course.course_identifier === courseName)))
 }
 
   if (!user) {
@@ -48,9 +48,13 @@ function nextSemesterCoursesClick (e) {
       <NavBar userName={user} />
       <div className="App-body">
         <SaveChangesButton />
-        <SuggestCoursesButton />
+        <SuggestCoursesButton nextSemesterClasses={nextSemesterClasses} 
+                              availableCourses={availableCourses}
+                              setNextSemesterCourses={setNextSemesterCourses}
+                              setAvailableCourses={setAvailableCourses}
+                              takenCourses={takenCourses} />
         <div className="container">
-          <CourseBox title="Taken Courses" courseList={[]}/>
+          <CourseBox title="Taken Courses" courseList={takenCourses}/>
           <CourseBox title="Next Semester Schedule" courseList={nextSemesterClasses} courseClickFunction={nextSemesterCoursesClick}/>
           <CourseBox title="Available Courses" id="AvailableCourseList" courseList={availableCourses} courseClickFunction={availableCoursesClick}/>        
         </div>
