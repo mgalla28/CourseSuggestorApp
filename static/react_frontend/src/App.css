@@ -10,6 +10,7 @@
   --space-cadet: #14244eff;
   --xiketic: #0e1324ff;
   --xiketic-2: #02061dff;
+  --my-green: #80b38f;
 
   background-color: var(--space-cadet);
 }
@@ -76,4 +77,8 @@
   padding: 0!important;
   color: #61dafb;
   cursor: pointer;
+}
+
+.card-header {
+  background-color: var(--my-green) !important;
 }

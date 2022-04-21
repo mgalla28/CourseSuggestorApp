@@ -6,7 +6,6 @@
       "credit_hours": 3
     },
 
-
     {
       "course_identifier": "CS 151",
       "pre_reqs": [],
@@ -40,21 +39,18 @@
     {
       "course_identifier": "CS 341",
       "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
-      "dependents": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 342",
       "pre_reqs" : ["CS 211", "CS 251"],
-      "dependents": ["CS 440"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 361",
       "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
-      "dependents": [],
       "credit_hours": 3
     },
 

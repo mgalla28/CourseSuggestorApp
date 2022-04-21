@@ -30,7 +30,7 @@ const SuggestCoursesButton = ({nextSemesterClasses, availableCourses, setNextSem
     }
 
     return (
-        <button className="btn btn-primary m-1" onClick={suggestCourses}>Suggest Next Semester Courses</button>
+        <button className="btn btn-secondary m-1" onClick={suggestCourses}>Suggest Next Semester Courses</button>
     )
 }
 

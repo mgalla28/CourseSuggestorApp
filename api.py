@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 from Core import *
+import MongoManager
 
 app = Flask(__name__)
 CORS(app)
-UniversalDataConnection(FileManager())
+UniversalDataConnection(MongoManager.MongoManager())
 current_curriculum = Curriculum()
 
 

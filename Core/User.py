@@ -1,19 +1,15 @@
-from Core.Course import Course
-from Core.CourseList import CourseList
-
 class User:
     """A user contains a unique username and a set of taken classes"""
 
-    def __init__(self, userName, courseSet: CourseList=None):
+    def __init__(self, userName, course_list=None):
         self.userName = userName
-        if courseSet is None:
-            self.courseSet = CourseList()
+        if course_list is None:
+            self.course_list = []
         else:
-            self.courseSet = courseSet
+            self.course_list = course_list
 
-    def add_course(self, course):
-        self.courseSet.add_course(course)
 
+"""
     def suggest_courses(self, master_course_list):
         master_course_map = master_course_list
 
@@ -59,3 +55,4 @@ class User:
             ret_list.append(add_course)
 
         return ret_list
+"""
