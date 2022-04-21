@@ -18,11 +18,22 @@ class MongoManager(DataManager):
         pass
 
     def get_courselist(self) -> CourseList:
-        pass
+        all_courses = self.courses.find({})
+        courseDict = {}
+        for data in all_courses:
+            courseDict[data['course_identifier']] = Course(data['course_identifier'],
+                                                           data['pre_reqs'],
+                                                           data['credit_hours'])
+
+        return CourseList(input_dict=courseDict)
 
     def get_user(self, user_name):
         username_match = self.users.find_one({'username': user_name})
         return username_match
+
+    def get_course_json(self, course_identifier):
+        course = self.courses.find_one({'course_identifier': course_identifier}, {'_id': False})
+        return course
 
     def get_curriculum_json(self):
         all_courses = self.courses.find({})

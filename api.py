@@ -14,10 +14,16 @@ def login():
     request_json = request.get_json()
     name_query = request_json['userName']
     password = request_json['password']
+    if not name_query:
+        abort(400)
     user_data = UniversalDataConnection.get_instance().data_connection.get_user(name_query)
     if user_data['password'] != password:
         abort(400)
-    return jsonify({'username': user_data['username']})
+
+    courses_completed = []
+    for course_identifier in user_data['courses_completed']:
+        courses_completed.append(UniversalDataConnection.get_instance().data_connection.get_course_json(course_identifier))
+    return jsonify({'username': user_data['username'], 'courses_completed': courses_completed})
 
 
 @app.route('/curriculum', methods=['GET'])

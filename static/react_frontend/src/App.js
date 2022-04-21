@@ -40,7 +40,7 @@ function nextSemesterCoursesClick (e) {
 }
 
   if (!user) {
-    return <Login setUser={setUser}/>           
+    return <Login setUser={setUser} setTakenCourses={setTakenCourses} availableCourses={availableCourses} setAvailableCourses={setAvailableCourses}/>           
   }
 
   return (
@@ -53,7 +53,7 @@ function nextSemesterCoursesClick (e) {
                               setNextSemesterCourses={setNextSemesterCourses}
                               setAvailableCourses={setAvailableCourses}
                               takenCourses={takenCourses} />
-        <div className="container">
+        <div className="row">
           <CourseBox title="Taken Courses" courseList={takenCourses}/>
           <CourseBox title="Next Semester Schedule" courseList={nextSemesterClasses} courseClickFunction={nextSemesterCoursesClick}/>
           <CourseBox title="Available Courses" id="AvailableCourseList" courseList={availableCourses} courseClickFunction={availableCoursesClick}/>        

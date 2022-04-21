@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-function Login({setUser}) {
+function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}) {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
 
@@ -22,6 +22,17 @@ function Login({setUser}) {
             const data = await res.json()
             if ('username' in data){
                 setUser(data['username'])
+                setTakenCourses(data['courses_completed'])
+                // Remove taken courses from available courses
+                setAvailableCourses(availableCourses.filter(course => {
+                    let retVal = true;
+                    data['courses_completed'].forEach((element) => {                    
+                        if (element.course_identifier === course.course_identifier) {
+                            retVal = false;
+                        }
+                    })
+                    return retVal;
+                }))
                 document.body.style.cursor='initial'
             }
         }
