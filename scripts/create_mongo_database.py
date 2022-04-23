@@ -3,7 +3,7 @@ import json
 
 conn = MongoClient()
 db = conn.CourseSuggestor
-user_source_file = open('../data_files/users.json')
+user_source_file = open('data_files/users.json')
 user_json_data = json.load(user_source_file)
 
 user_collection = db.Users
@@ -16,7 +16,7 @@ for user_data in user_json_data.values():
             "courses_completed": user['courses_completed'],
         })
 
-course_source_file = open('../data_files/courses.json')
+course_source_file = open('data_files/courses.json')
 course_json_data = json.load(course_source_file)
 
 course_collection = db.Courses

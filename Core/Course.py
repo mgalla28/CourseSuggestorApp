@@ -16,3 +16,6 @@ class Course:
 
     def __eq__(self, other):
         return self.course_identifier == other.course_identifier
+
+    def __repr__(self):
+        return f'Course object with identifier of {self.course_identifier}'

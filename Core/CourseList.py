@@ -1,14 +1,14 @@
 from .Course import Course
-
+from collections import OrderedDict
 
 class CourseList:
     """Graph that contains courses."""
 
     def __init__(self, input_dict: dict = None):
-        self.course_dict = {}
         if input_dict is not None:
-            for key, value in input_dict.items():
-                self.course_dict[key] = value
+            self.course_dict = OrderedDict(sorted(input_dict.items(), reverse=True))
+        else:
+            self.course_dict = OrderedDict()
 
     def return_vertices(self):
         ret_lst = []
@@ -25,3 +25,4 @@ class CourseList:
     def add_course(self, course):
         if type(course) is Course and course.course_identifier not in self.course_dict:
             self.course_dict[course.course_identifier] = course
+            self.course_dict = OrderedDict(sorted(self.course_dict.items(), reverse=True))

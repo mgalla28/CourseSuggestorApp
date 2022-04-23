@@ -19,7 +19,7 @@ function App() {
 
   const [user, setUser] = useState();
   const [availableCourses, setAvailableCourses] = useState([]);
-  const [nextSemesterClasses, setNextSemesterCourses] = useState([]);
+  const [nextSemesterCourses, setNextSemesterCourses] = useState([]);
   const [takenCourses, setTakenCourses] = useState([]);
   useEffect(() => {
     fetchAllCourses()
@@ -28,7 +28,7 @@ function App() {
 function availableCoursesClick (e) {
   const courseText = e.currentTarget.textContent;
   const courseName = courseText.slice(0, 6)
-  setNextSemesterCourses(nextSemesterClasses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
+  setNextSemesterCourses(nextSemesterCourses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
   setAvailableCourses(availableCourses.filter(course => !(course.course_identifier === courseName)))
 }
 
@@ -36,7 +36,7 @@ function nextSemesterCoursesClick (e) {
   const courseText = e.currentTarget.textContent;
   const courseName = courseText.slice(0, 6)
   setAvailableCourses(availableCourses.concat([{'course_identifier': courseName, 'credit_hours': 3}]))
-  setNextSemesterCourses(nextSemesterClasses.filter(course => !(course.course_identifier === courseName)))
+  setNextSemesterCourses(nextSemesterCourses.filter(course => !(course.course_identifier === courseName)))
 }
 
   if (!user) {
@@ -47,15 +47,15 @@ function nextSemesterCoursesClick (e) {
     <div className="App">
       <NavBar userName={user} />
       <div className="App-body">
-        <SaveChangesButton />
-        <SuggestCoursesButton nextSemesterClasses={nextSemesterClasses} 
+        <SaveChangesButton nextSemesterCourses={nextSemesterCourses} setNextSemesterCourses={setNextSemesterCourses} setTakenCourses={setTakenCourses} user={user}/>
+        <SuggestCoursesButton nextSemesterClasses={nextSemesterCourses} 
                               availableCourses={availableCourses}
                               setNextSemesterCourses={setNextSemesterCourses}
                               setAvailableCourses={setAvailableCourses}
                               takenCourses={takenCourses} />
         <div className="row">
           <CourseBox title="Taken Courses" courseList={takenCourses}/>
-          <CourseBox title="Next Semester Schedule" courseList={nextSemesterClasses} courseClickFunction={nextSemesterCoursesClick}/>
+          <CourseBox title="Next Semester Schedule" courseList={nextSemesterCourses} courseClickFunction={nextSemesterCoursesClick}/>
           <CourseBox title="Available Courses" id="AvailableCourseList" courseList={availableCourses} courseClickFunction={availableCoursesClick}/>        
         </div>
       </div>

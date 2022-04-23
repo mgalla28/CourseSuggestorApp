@@ -9,7 +9,6 @@ class User:
             self.course_list = course_list
 
 
-"""
     def suggest_courses(self, master_course_list):
         master_course_map = master_course_list
 
@@ -55,4 +54,4 @@ class User:
             ret_list.append(add_course)
 
         return ret_list
-"""
+
