@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 UniversalDataConnection(MongoManager.MongoManager())
 current_curriculum = Curriculum()
-print(sorted(current_curriculum.master_course_list.course_dict, reverse=True))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -61,10 +61,8 @@ def suggest_courses():
 
     suggested_course_list = []
     for course in suggested_courses:
-        print(course)
         suggested_course_list.append({'course_identifier': course.course_identifier, 'credit_hours': course.credit_hours})
 
-    print(suggested_course_list)
     return jsonify(suggested_course_list)
 
 

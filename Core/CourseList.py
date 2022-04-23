@@ -1,6 +1,7 @@
 from .Course import Course
 from collections import OrderedDict
 
+
 class CourseList:
     """Graph that contains courses."""
 
@@ -11,12 +12,18 @@ class CourseList:
             self.course_dict = OrderedDict()
 
     def return_vertices(self):
+        """
+        Return a list of all vertices in the graph
+        """
         ret_lst = []
         for i in self.course_dict.keys():
             ret_lst.append(i)
         return ret_lst
 
     def return_vertices_set(self):
+        """
+        Returns a set with all vertices in the graph
+        """
         ret_set = set()
         for key, value in self.course_dict.items():
             ret_set.add(key)

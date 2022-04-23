@@ -14,17 +14,14 @@ class MongoManager(DataManager):
         self.users = self.db.Users
         self.courses = self.db.Courses
 
-    def get_courses(self) -> Course:
-        pass
-
     def get_courselist(self) -> CourseList:
         all_courses = self.courses.find({})
-        courseDict = {}
+        course_dict = {}
         for data in all_courses:
-            courseDict[data['course_identifier']] = Course(data['course_identifier'],
+            course_dict[data['course_identifier']] = Course(data['course_identifier'],
                                                            data['pre_reqs'],
                                                            data['credit_hours'])
-        return CourseList(input_dict=courseDict)
+        return CourseList(input_dict=course_dict)
 
     def get_user(self, user_name):
         username_match = self.users.find_one({'username': user_name})
@@ -41,14 +38,10 @@ class MongoManager(DataManager):
         return courses_json
 
     def update_courses_completed(self, username, courses_completed):
-        print(f'Start of function: {courses_completed}')
         current_completed_courses = self.users.find_one({'username': username}, {'_id': False, 'username': False, 'password': False})
         courses_completed.extend(current_completed_courses['courses_completed'])
         courses_completed.sort()
 
-        print(f'After finding coureses: {current_completed_courses}')
-        print(f'After appending courses: {courses_completed}')
         self.users.update_one({'username': username}, {'$set': {'courses_completed': courses_completed}})
         response = self.users.find_one({'username': username}, {'_id': False, 'username': False, 'password': False})
-        print(f'Response:{response}')
-        return response # Get the new updated list of courses taken by user
+        return response  # Get the new updated list of courses taken by user

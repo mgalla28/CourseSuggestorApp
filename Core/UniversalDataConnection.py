@@ -30,4 +30,4 @@ class UniversalDataConnection:
 
     @data_connection.setter
     def data_connection(self, data_manager):
-        self.__data_connection = data_manager  # This supports changing the data source, for better or for worse
+        self.__data_connection = data_manager
