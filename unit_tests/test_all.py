@@ -1,13 +1,20 @@
 from Core import UniversalDataConnection
 from testing_tools.FileManager import FileManager
 from pathlib import Path
+import pytest
 
-def test_data_connection():
+@pytest.fixture
+def user_file_path():
     currentProjPath = Path.cwd().parent
-    user_file_path = f'{currentProjPath}\\data_files\\users.json'
-    courses_file_path = f'{currentProjPath}\\data_files\\courses.json'
+    yield currentProjPath / 'data_files' / 'users.json'
 
-    UniversalDataConnection(FileManager(user_file_path=user_file_path, course_file_path=courses_file_path))
+@pytest.fixture()
+def courses_file_path():
+    currentProjPath = Path.cwd().parent
+    yield currentProjPath / 'data_files' / 'courses.json'
+
+def test_data_connection(courses_file_path):
+    UniversalDataConnection(FileManager(course_file_path=courses_file_path))
     data_connection = UniversalDataConnection.get_instance().data_connection
     course_json = data_connection.get_course_json("CS 141")
 
