@@ -1,6 +1,7 @@
 from typing import List
 
 from Core import UniversalDataConnection, Course
+from passlib.hash import sha256_crypt
 
 
 class BackendLogicHelper:
@@ -12,7 +13,7 @@ class BackendLogicHelper:
         if not user_name:
             return False
         user_data = data_connection.get_user(user_name)
-        if user_data['password'] != password:
+        if not sha256_crypt.verify(password, user_data['password']):
             return False
 
         return True
