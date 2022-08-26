@@ -1,40 +1,26 @@
-from typing import List
-
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 from Core import *
 from MongoManager import MongoManager
+from BackendLogicHelper import BackendLogicHelper
 
 app = Flask(__name__)
 CORS(app)
 UniversalDataConnection(MongoManager())
 current_curriculum = Curriculum()
+backend_logic_helper = BackendLogicHelper()
 
 
-def verify_login(user_name: str, password: str) -> bool:
-    data_connection = UniversalDataConnection.get_instance().data_connection
-    if not user_name:
-        return False
-    user_data = data_connection.get_user(user_name)
-    if user_data['password'] != password:
-        return False
 
-def get_user_courses_completed(user_name: str) -> List[Course]:
-    courses_completed = []
-    data_connection = UniversalDataConnection.get_instance().data_connection
-    user_data = data_connection.get_user(user_name)
-    for course_identifier in user_data['courses_completed']:
-        courses_completed.append(data_connection.get_course_json(course_identifier))
-    return courses_completed
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     request_json = request.get_json()
     user_name = request_json['userName']
-    if not verify_login(user_name=user_name, password=request_json['password']):
+    if not backend_logic_helper.verify_login(user_name=user_name, password=request_json['password']):
         abort(400)
 
-    courses_completed = get_user_courses_completed(user_name=user_name)
+    courses_completed = backend_logic_helper.get_user_courses_completed(user_name=user_name)
     return jsonify({'username': user_name, 'courses_completed': courses_completed})
 
 
