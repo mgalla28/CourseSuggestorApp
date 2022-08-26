@@ -15,6 +15,8 @@ class BackendLogicHelper:
         if user_data['password'] != password:
             return False
 
+        return True
+
     def get_user_courses_completed(self, user_name: str) -> List[Course]:
         courses_completed = []
         data_connection = UniversalDataConnection.get_instance().data_connection
