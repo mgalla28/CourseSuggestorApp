@@ -40,7 +40,11 @@ function nextSemesterCoursesClick (e) {
 }
 
   if (!user) {
-    return <Login setUser={setUser} setTakenCourses={setTakenCourses} availableCourses={availableCourses} setAvailableCourses={setAvailableCourses}/>           
+    const userData = window.localStorage.getItem('USER');
+    if (userData != null)
+        setUser(userData)
+    else
+        return <Login setUser={setUser} setTakenCourses={setTakenCourses} availableCourses={availableCourses} setAvailableCourses={setAvailableCourses}/>
   }
 
   return (

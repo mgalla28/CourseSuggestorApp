@@ -20,8 +20,9 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
 
         if (res.ok) {
             const data = await res.json()
-            if ('username' in data){
+            if ('username' in data) {
                 setUser(data['username'])
+                window.localStorage.setItem('USER', data['username'])
                 setTakenCourses(data['courses_completed'])
                 // Remove taken courses from available courses
                 setAvailableCourses(availableCourses.filter(course => {
@@ -58,6 +59,7 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
             const data = await res.json()
             if ('username' in data){
                 setUser(data['username'])
+                window.localStorage.setItem('USER', data['username'])
                 document.body.style.cursor='initial'
             }
         }
