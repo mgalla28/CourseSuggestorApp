@@ -6,6 +6,25 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
 
+    const handleLogin = async (data, isGuest) => {
+        setUser(data['username'])
+        window.localStorage.setItem('USER', data['username'])
+        if (!isGuest){
+            setTakenCourses(data['courses_completed'])
+        // Remove taken courses from available courses
+            setAvailableCourses(availableCourses.filter(course => {
+                let retVal = true;
+                data['courses_completed'].forEach((element) => {                    
+                    if (element.course_identifier === course.course_identifier) {
+                        retVal = false;
+                    }
+                })
+                return retVal;
+            }))
+        }
+        document.body.style.cursor='initial'
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()        
         document.body.style.cursor='wait'
@@ -21,20 +40,7 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
         if (res.ok) {
             const data = await res.json()
             if ('username' in data) {
-                setUser(data['username'])
-                window.localStorage.setItem('USER', data['username'])
-                setTakenCourses(data['courses_completed'])
-                // Remove taken courses from available courses
-                setAvailableCourses(availableCourses.filter(course => {
-                    let retVal = true;
-                    data['courses_completed'].forEach((element) => {                    
-                        if (element.course_identifier === course.course_identifier) {
-                            retVal = false;
-                        }
-                    })
-                    return retVal;
-                }))
-                document.body.style.cursor='initial'
+                handleLogin(data, false)                
             }
         }
         else {
@@ -58,9 +64,7 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
         if (res.ok) {
             const data = await res.json()
             if ('username' in data){
-                setUser(data['username'])
-                window.localStorage.setItem('USER', data['username'])
-                document.body.style.cursor='initial'
+                handleLogin(data, true)
             }
         }
         else {
