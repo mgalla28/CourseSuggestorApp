@@ -25,3 +25,13 @@ class BackendLogicHelper:
         for course_identifier in user_data['courses_completed']:
             courses_completed.append(data_connection.get_course_json(course_identifier))
         return courses_completed
+
+    def update_user_completed_courses(self, user_name, courses, current_curriculum):
+        data_connection = UniversalDataConnection.get_instance().data_connection
+        new_completed_courses = data_connection.update_courses_completed(user_name, courses)
+        new_course_list = current_curriculum.build_course_list(new_completed_courses['courses_completed'])
+        updated_course_list = []
+        for course in new_course_list.course_dict.values():
+            updated_course_list.append({'course_identifier': course.course_identifier, 'credit_hours': course.credit_hours})
+        
+        return updated_course_list

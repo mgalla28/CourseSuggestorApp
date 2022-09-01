@@ -11,8 +11,6 @@ current_curriculum = Curriculum()
 backend_logic_helper = BackendLogicHelper()
 
 
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     request_json = request.get_json()
@@ -35,13 +33,10 @@ def complete_courses():
     username = request_json['user_name']
     completed_courses = request_json['courses']
 
-    data_connection = UniversalDataConnection.get_instance().data_connection
-    new_completed_courses = data_connection.update_courses_completed(username, completed_courses)
-    new_course_list = current_curriculum.build_course_list(new_completed_courses['courses_completed'])
-    ret_list = []
-    for course in new_course_list.course_dict.values():
-        ret_list.append({'course_identifier': course.course_identifier, 'credit_hours': course.credit_hours})
-    return jsonify(ret_list)
+    updated_user_course_list = backend_logic_helper.update_user_completed_courses(user_name=username,
+                                                                                  courses=completed_courses,
+                                                                                  current_curriculum=current_curriculum)
+    return jsonify(updated_user_course_list)
 
 
 @app.route('/suggest', methods=['POST'])
@@ -58,7 +53,8 @@ def suggest_courses():
 
     suggested_course_list = []
     for course in suggested_courses:
-        suggested_course_list.append({'course_identifier': course.course_identifier, 'credit_hours': course.credit_hours})
+        suggested_course_list.append(
+            {'course_identifier': course.course_identifier, 'credit_hours': course.credit_hours})
 
     return jsonify(suggested_course_list)
 
