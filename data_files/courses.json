@@ -2,84 +2,98 @@
   "courses": [
     {
       "course_identifier": "CS 141",
+      "course_title": "Program Design II",
       "pre_reqs": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 151",
+      "course_title": "Mathematical Foundations of Computing",
       "pre_reqs": [],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 211",
+      "course_title": "Programming Practicum",
       "pre_reqs": ["CS 141"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 251",
+      "course_title": "Data Structures",
       "pre_reqs" : ["CS 141", "CS 151"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 261",
+      "course_title": "Machine Organization",
       "pre_reqs" : ["CS 141"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 301",
+      "course_title": "Languages and Automata",
       "pre_reqs" : ["CS 151"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 341",
+      "course_title": "Programming Language Design and Implementation",
       "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 342",
+      "course_title": "Software Design",
       "pre_reqs" : ["CS 211", "CS 251"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 361",
+      "course_title": "Mathematical Foundations of Computing",
       "pre_reqs" : ["CS 211", "CS 251", "CS 261"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 362",
+      "course_title": "Systems Programming",
       "pre_reqs": ["CS 211", "CS 261"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 377",
+      "course_title": "Communication and Ethical Issues in Computing",
       "pre_reqs": ["CS 251"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 401",
+      "course_title": "Computer Algorithms I",
       "pre_reqs": ["CS 251"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 440",
+      "course_title": "Software Engineering I",
       "pre_reqs": ["CS 342"],
       "credit_hours": 3
     },
 
     {
       "course_identifier": "CS 442",
+      "course_title": "Software Engineering II",
       "pre_reqs": ["CS 440"],
       "credit_hours": 3
     }
