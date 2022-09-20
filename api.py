@@ -3,6 +3,7 @@ from flask_cors import CORS
 from Core import *
 from MongoManager import MongoManager
 from BackendLogicHelper import BackendLogicHelper
+from swagger_ui import api_doc
 
 app = Flask(__name__)
 CORS(app)
@@ -59,4 +60,6 @@ def suggest_courses():
     return jsonify(suggested_course_list)
 
 
+spec_file = open('static/swagger.json').read()
+api_doc(app, config_spec=spec_file, url_prefix='/spec', title='Api Doc')
 app.run()
