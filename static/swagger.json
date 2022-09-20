@@ -1,9 +1,23 @@
 {
   "openapi": "3.0.0",
-  "swagger": "2.0",
   "info": {
     "description": "Course Suggestor",
     "version": "1.0.0",
     "title": "Course Suggestion App"
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login user",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Login information invalid"
+          }
+        }
+      }
+    }
   }
 }
