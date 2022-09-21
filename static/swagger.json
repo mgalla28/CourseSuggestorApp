@@ -18,6 +18,36 @@
           }
         }
       }
+    },
+    "/curriculum": {
+      "get": {
+        "summary": "Get the current curriculum in use",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/complete_courses": {
+      "post": {
+        "summary": "Add a given set of courses to the compeleted courses of a user",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/suggest": {
+      "post": {
+        "summary": "Suggest a set of courses for next semester given a set of courses",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   }
 }
