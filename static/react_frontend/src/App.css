@@ -49,6 +49,21 @@
   }
 }
 
+.modal-content {
+  background-color: var(--black) !important;
+  color: white
+}
+
+div.create-user-inputs {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap:5px;
+
+}
+div.create-user-inputs label       { text-align:right; }
+div.create-user-inputs label:after { content: ":"; }
+
+
 .Login-body {
   background-color: var(--oxford-blue);
   padding: 25px;
