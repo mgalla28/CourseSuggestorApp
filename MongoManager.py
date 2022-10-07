@@ -14,6 +14,9 @@ class MongoManager(DataManager):
         self.users = self.db.Users
         self.courses = self.db.Courses
 
+    def create_user(self, user_name: str, password: str) -> None:
+        self.users.insert_one({'username': user_name, 'password': password, 'courses_completed': []})
+
     def get_courselist(self) -> CourseList:
         all_courses = self.courses.find({})
         course_dict = {}

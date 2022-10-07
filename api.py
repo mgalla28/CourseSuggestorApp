@@ -10,9 +10,7 @@ CORS(app)
 UniversalDataConnection(MongoManager())
 current_curriculum = Curriculum()
 backend_logic_helper = BackendLogicHelper()
-
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     request_json = request.get_json()
     user_name = request_json['userName']
@@ -27,6 +25,17 @@ def login():
 def get_curriculum():
     return UniversalDataConnection.get_instance().data_connection.get_curriculum_json()
 
+
+@app.route('/create_user', methods=['POST'])
+def create_user():
+    request_json = request.get_json()
+    username = request_json['userName']
+    password = request_json['password']
+    if backend_logic_helper.verify_username_available('user_name'):
+        backend_logic_helper.create_user(username, password)
+        return 'User added', 200
+    else:
+        abort(400)
 
 @app.route('/complete_courses', methods=['POST'])
 def complete_courses():

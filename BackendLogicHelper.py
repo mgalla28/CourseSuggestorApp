@@ -18,6 +18,14 @@ class BackendLogicHelper:
 
         return True
 
+    def verify_username_available(self, user_name:str) -> bool:
+        data_connection = UniversalDataConnection.get_instance().data_connection
+        return data_connection.get_user(user_name) is None
+
+    def create_user(self, user_name: str, password: str):
+        UniversalDataConnection.get_instance().data_connection.create_user(user_name,
+                                                                           sha256_crypt.hash(password))
+
     def get_user_courses_completed(self, user_name: str) -> List[Course]:
         courses_completed = []
         data_connection = UniversalDataConnection.get_instance().data_connection

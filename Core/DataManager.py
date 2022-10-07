@@ -11,6 +11,13 @@ class DataManager(ABC):
     """
 
     @abstractmethod
+    def create_user(self, user_name: str, password: str) -> None:
+        """
+        Create User
+        """
+        pass
+
+    @abstractmethod
     def get_user(self, user_name: str) -> dict:
         """
         Get user data
