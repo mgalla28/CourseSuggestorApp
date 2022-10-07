@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import CreateUserModal from './CreateUserModal';
 
 
 function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}) {
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = async (data, isGuest) => {
         setUser(data['username'])
@@ -86,8 +86,10 @@ function Login({setUser, setTakenCourses, availableCourses, setAvailableCourses}
                             <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
                             <button className="btn btn-secondary mt-3" type='submit'>Login</button>
                             <button className="btn btn-secondary mt-2" onClick={loginAsGuest}>Login as Guest</button>
+
                         </div>
                     </form>
+                    <CreateUserModal />
                 </div>
             </div>
         </div>
