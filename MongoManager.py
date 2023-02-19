@@ -9,7 +9,7 @@ class SingletonException(Exception):
 class MongoManager(DataManager):
     """DataManager for MongoDB connections"""
     def __init__(self):
-        self.conn = MongoClient()
+        self.conn = MongoClient('mongodb:27017')
         self.db = self.conn.CourseSuggestor
         self.users = self.db.Users
         self.courses = self.db.Courses

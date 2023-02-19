@@ -1,0 +1,23 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "python /backend/api.py"
+    image: python:3.8
+    volumes:
+      - .:/backend
+    depends_on:
+      - mongodb
+    ports:
+      - "5000:5000"
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod
+    volumes:
+      - /data/db
+    ports:
+      - 27017:27017
